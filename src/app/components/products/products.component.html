@@ -1,0 +1,14 @@
+<div class="products-container">
+<div class="card" *ngFor="let product of products | slice:(currentPage*6):(currentPage*6+6)">
+    <img [src]="product.image" alt="{{product.title}}" class="product-image">
+    <div class="card-body">
+        <h3>{{product.title}}</h3>
+        <p>{{product.description | slice: 0:100}}...</p>
+        <p><strong>Price: ${{product.price}}</strong></p>
+    </div>
+</div>
+</div>
+<div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 0">Previous</button>
+    <button (click)="nextPage()" [disabled]="(currentPage + 1)*5 >= products.length">Next</button>
+</div>
